@@ -27,5 +27,23 @@ public class LoginTests extends BaseTest {
         Assertions.assertTrue(loginPage.isErrorTextDisplayed("Epic sadface: Username and password do not match any user in this service"));
     }
 
-    
+    @Test
+    public void loginEmptyUserName(){
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        Assertions.assertTrue(loginPage.isErrorTextDisplayed("Epic sadface: Username is required"));
+    }
+
+    @Test
+    public void loginEmptyPassword(){
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("");
+        loginPage.clickOnLoginButton();
+
+        Assertions.assertTrue(loginPage.isErrorTextDisplayed("Epic sadface: Password is required"));
+    }
 }
