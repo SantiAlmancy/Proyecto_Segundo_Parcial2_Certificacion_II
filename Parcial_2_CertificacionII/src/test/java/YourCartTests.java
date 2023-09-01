@@ -106,5 +106,42 @@ public class YourCartTests extends BaseTest
         Assertions.assertEquals(desc3i, desc3f);
     }
 
-    
+    @Test
+    public void returnToHomePage()
+    {
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.clickOnShoppingCartButton();
+
+        YourCartPage yourCartPage = new YourCartPage(DriverManager.getDriver().driver);
+        yourCartPage.clickOnContinueShoppingButton();
+
+        Assertions.assertTrue(homePage.isComboBoxDisplayed());
+    }
+
+    @Test
+    public void verifyProductIsRemovedFromYourCartPageInHomePage()
+    {
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.addProductToCart("Sauce Labs Fleece Jacket");
+        homePage.addProductToCart("Sauce Labs Bike Light");
+
+        homePage.clickOnShoppingCartButton();
+
+        YourCartPage yourCartPage = new YourCartPage(DriverManager.getDriver().driver);
+        yourCartPage.removeProduct("Sauce Labs Fleece Jacket");
+
+        yourCartPage.clickOnContinueShoppingButton();
+
+        Assertions.assertTrue(homePage.doesButtonAddExistForProduct("Sauce Labs Fleece Jacket"));
+    }
 }
