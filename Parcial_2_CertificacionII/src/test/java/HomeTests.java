@@ -56,5 +56,39 @@ public class HomeTests extends BaseTest
         homePage.selectSortComboBox("Price (high to low)");
         Assertions.assertTrue((homePage.areProductsInDescendantOrderByPrice()));
     }
+    @Test
+    public void buttonModifiedToRemoveWhenAddedProduct()
+    {
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.addProductToCart("Sauce Labs Fleece Jacket");
+        homePage.addProductToCart("Sauce Labs Bike Light");
+
+        Assertions.assertTrue(homePage.doesButtonRemoveExistForProduct("Sauce Labs Fleece Jacket"));
+        Assertions.assertTrue(homePage.doesButtonRemoveExistForProduct("Sauce Labs Bike Light"));
+    }
+
+    @Test
+    public void buttonModifiedToAddToCartWhenDeletedProduct()
+    {
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.addProductToCart("Sauce Labs Fleece Jacket");
+        homePage.addProductToCart("Sauce Labs Bike Light");
+
+        homePage.removeProduct("Sauce Labs Fleece Jacket");
+        homePage.removeProduct("Sauce Labs Bike Light");
+
+        Assertions.assertTrue(homePage.doesButtonAddExistForProduct("Sauce Labs Fleece Jacket"));
+        Assertions.assertTrue(homePage.doesButtonAddExistForProduct("Sauce Labs Bike Light"));
+    }
     
 }
