@@ -42,7 +42,4 @@ public class LoginPage {
         String actualErrorMessage = loginErrorMessage.getText();
         return error.equalsIgnoreCase(actualErrorMessage);
     }
-    public boolean isLoginButtonDisplayed(){
-        return loginButton.isDisplayed();
-    }
 }

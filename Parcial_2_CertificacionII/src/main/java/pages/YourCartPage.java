@@ -71,21 +71,6 @@ public class YourCartPage
     {
         continueShoppingButton.click();
     }
-    public boolean correctAddedItems(int quantity)
-    {
-        List<WebElement> badgeElements = driver.findElements(By.className("shopping_cart_badge"));
-        if (!badgeElements.isEmpty())
-        {
-            WebElement badgeElement = badgeElements.get(0);
-            String badgeValue = badgeElement.getText();
-            int actualQuantity = Integer.parseInt(badgeValue);
-            return (quantity == actualQuantity);
-        }
-        else
-        {
-            return (quantity == 0);
-        }
-    }
     public boolean isCheckOutButtonDisplayed()
     {
         return buttonCheckout.isDisplayed();

@@ -38,6 +38,20 @@ public class DriverManager {
             }
         }
     }
+    public static void closeAndSwitchToPreviousWindow() {
+        WebDriver driver = DriverManager.getDriver().driver;
+        String currentWindowHandle = driver.getWindowHandle();
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        for (String handle : windowHandles) {
+            if (!handle.equals(currentWindowHandle)) {
+                driver.switchTo().window(handle);
+                driver.close();
+                driver.switchTo().window(currentWindowHandle);
+                break;
+            }
+        }
+    }
     public static String getCurrentURL()
     {
         return DriverManager.getDriver().driver.getCurrentUrl();
@@ -50,6 +64,4 @@ public class DriverManager {
             DriverManager.getDriver().driver.close();
         }
     }
-
-
 }

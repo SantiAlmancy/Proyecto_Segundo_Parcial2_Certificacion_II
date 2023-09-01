@@ -16,6 +16,8 @@ public class CheckoutOverviewPage
     List<WebElement> productNames;
     @FindBy(id="cancel")
     WebElement buttonCancel;
+    @FindBy(className = "summary_subtotal_label")
+    WebElement priceElement;
 
     public CheckoutOverviewPage(WebDriver driver)
     {
@@ -45,6 +47,12 @@ public class CheckoutOverviewPage
     public void clickOnCancelButton()
     {
         buttonCancel.click();
+    }
+    public double getSubTotal()
+    {
+        String priceText = priceElement.getText();
+        priceText = priceText.replace("Item total:", "").replace("$", "").trim();
+        return Double.parseDouble(priceText);
     }
 
 }

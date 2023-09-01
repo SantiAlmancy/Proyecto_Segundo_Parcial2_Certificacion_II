@@ -56,4 +56,21 @@ public class MenuTests extends BaseTest
         Assertions.assertTrue(homePage.correctAddedItems(0));
     }
 
+    @Test
+    public void allItemsFromMenu()
+    {
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.clickOnShoppingCartButton();
+
+        MenuPage menuPage = new MenuPage(DriverManager.getDriver().driver);
+        menuPage.clickOnMenuButton();
+        menuPage.clickOnAllItemsButton();
+
+        Assertions.assertTrue(homePage.isComboBoxDisplayed());
+    }
 }

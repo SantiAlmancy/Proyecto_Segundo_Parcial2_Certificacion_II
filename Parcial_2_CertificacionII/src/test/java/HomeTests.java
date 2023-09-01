@@ -17,6 +17,7 @@ public class HomeTests extends BaseTest
 
         HomePage homePage = new HomePage(DriverManager.getDriver().driver);
         homePage.selectSortComboBox("Name (Z to A)");
+
         Assertions.assertTrue(homePage.areProductsInDescendantOrderByName());
     }
 
@@ -30,6 +31,7 @@ public class HomeTests extends BaseTest
 
         HomePage homePage = new HomePage(DriverManager.getDriver().driver);
         homePage.selectSortComboBox("Name (A to Z)");
+
         Assertions.assertTrue(homePage.areProductsInAscendantOrderByName());
     }
     @Test
@@ -42,6 +44,7 @@ public class HomeTests extends BaseTest
 
         HomePage homePage = new HomePage(DriverManager.getDriver().driver);
         homePage.selectSortComboBox("Price (low to high)");
+
         Assertions.assertTrue((homePage.areProductsInAscendantOrderByPrice()));
     }
     @Test
@@ -54,6 +57,7 @@ public class HomeTests extends BaseTest
 
         HomePage homePage = new HomePage(DriverManager.getDriver().driver);
         homePage.selectSortComboBox("Price (high to low)");
+
         Assertions.assertTrue((homePage.areProductsInDescendantOrderByPrice()));
     }
     @Test

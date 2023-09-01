@@ -96,8 +96,11 @@ public class HomePage {
         String addToCartId = "add-to-cart-";
         addToCartId = addToCartId + productNameLowerCase;
 
-        WebElement addToCartButton = driver.findElement(By.id(addToCartId));
-        addToCartButton.click();
+        List <WebElement> addToCartButton = driver.findElements(By.id(addToCartId));
+        if (!addToCartButton.isEmpty())
+        {
+            addToCartButton.get(0).click();
+        }
     }
 
     public boolean areProductButtonsDefault()
@@ -201,7 +204,10 @@ public class HomePage {
         String productLowerCase = product.toLowerCase();
         productLowerCase = productLowerCase.replace(" ", "-");
         String removeProductId = "remove-"+productLowerCase;
-        WebElement removeButton = driver.findElement(By.id(removeProductId));
-        removeButton.click();
+        List <WebElement> removeButton = driver.findElements(By.id(removeProductId));
+        if (!removeButton.isEmpty())
+        {
+            removeButton.get(0).click();
+        }
     }
 }

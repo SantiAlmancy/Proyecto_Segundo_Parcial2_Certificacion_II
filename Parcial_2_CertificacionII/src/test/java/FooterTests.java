@@ -21,8 +21,9 @@ public class FooterTests extends BaseTest
         String expectedUrl = "https://twitter.com/saucelabs";
         String newUrl = DriverManager.getCurrentURL();
         Assertions.assertEquals(expectedUrl, newUrl);
-    }
 
+        DriverManager.closeAndSwitchToPreviousWindow();
+    }
     @Test
     public void facebookRedirection()
     {
@@ -38,8 +39,9 @@ public class FooterTests extends BaseTest
         String expectedUrl = "https://www.facebook.com/saucelabs";
         String newUrl = DriverManager.getCurrentURL();
         Assertions.assertEquals(expectedUrl, newUrl);
-    }
 
+        DriverManager.closeAndSwitchToPreviousWindow();
+    }
     @Test
     public void linkedinRedirection()
     {
@@ -55,5 +57,7 @@ public class FooterTests extends BaseTest
         String expectedUrl = "https://www.linkedin.com/company/sauce-labs/";
         String newUrl = DriverManager.getCurrentURL();
         Assertions.assertEquals(expectedUrl, newUrl);
+
+        DriverManager.closeAndSwitchToPreviousWindow();
     }
 }

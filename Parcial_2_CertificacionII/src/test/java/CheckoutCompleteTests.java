@@ -23,8 +23,8 @@ public class CheckoutCompleteTests extends BaseTest
         yourCartPage.clickOnCheckoutButton();
 
         CheckoutInformationPage checkoutPage = new CheckoutInformationPage(DriverManager.getDriver().driver);
-        checkoutPage.setFistNameTextBox("All");
-        checkoutPage.setLastNameTextBox("Might");
+        checkoutPage.setFistNameTextBox("FirstName");
+        checkoutPage.setLastNameTextBox("LastName");
         checkoutPage.setPostalCodeTextBox("1233");
         checkoutPage.clickOnContinueButton();
 
@@ -53,8 +53,8 @@ public class CheckoutCompleteTests extends BaseTest
         yourCartPage.clickOnCheckoutButton();
 
         CheckoutInformationPage checkoutPage = new CheckoutInformationPage(DriverManager.getDriver().driver);
-        checkoutPage.setFistNameTextBox("All");
-        checkoutPage.setLastNameTextBox("Might");
+        checkoutPage.setFistNameTextBox("FirstName");
+        checkoutPage.setLastNameTextBox("LastName");
         checkoutPage.setPostalCodeTextBox("1233");
         checkoutPage.clickOnContinueButton();
 

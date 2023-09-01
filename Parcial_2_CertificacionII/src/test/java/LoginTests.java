@@ -7,7 +7,8 @@ import utilities.DriverManager;
 public class LoginTests extends BaseTest {
 
     @Test
-    public void loginSuccessTest()  {
+    public void loginSuccessTest()
+    {
         LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
         loginPage.setUserNameTextBox("standard_user");
         loginPage.setPasswordTextBox("secret_sauce");
@@ -18,7 +19,8 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    public void loginFailed(){
+    public void loginFailed()
+    {
         LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
         loginPage.setUserNameTextBox("wrong_user");
         loginPage.setPasswordTextBox("wrong_password");
@@ -28,7 +30,8 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    public void loginEmptyUserName(){
+    public void loginEmptyUserName()
+    {
         LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
         loginPage.setUserNameTextBox("");
         loginPage.setPasswordTextBox("secret_sauce");

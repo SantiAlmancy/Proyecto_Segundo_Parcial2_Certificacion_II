@@ -178,6 +178,6 @@ public class CheckoutInformationTests extends BaseTest
         checkoutPage.setPostalCodeTextBox("aabcd");
         checkoutPage.clickOnContinueButton();
 
-        Assertions.assertFalse(checkoutPage.isErrorTextDisplayed("Error: Postal Code is required"));
+        Assertions.assertTrue(checkoutPage.isErrorTextDisplayed("Error: Postal Code is not valid"));
     }
 }

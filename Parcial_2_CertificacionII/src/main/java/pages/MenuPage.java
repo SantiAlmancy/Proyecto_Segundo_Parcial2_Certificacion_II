@@ -44,6 +44,10 @@ public class MenuPage
                 .until(ExpectedConditions.elementToBeClickable(By.id("reset_sidebar_link")));
         logoutLink.click();
     }
-
-
+    public void clickOnAllItemsButton()
+    {
+        WebElement logoutLink = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(By.id("inventory_sidebar_link")));
+        logoutLink.click();
+    }
 }

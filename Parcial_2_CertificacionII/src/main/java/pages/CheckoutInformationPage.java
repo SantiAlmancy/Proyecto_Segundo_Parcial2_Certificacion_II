@@ -41,10 +41,14 @@ public class CheckoutInformationPage
     {
         buttonContinue.click();
     }
-    public boolean isErrorTextDisplayed(String error)
-    {
-        String actualErrorMessage = errorMessage.getText();
-        return error.equalsIgnoreCase(actualErrorMessage);
+    public boolean isErrorTextDisplayed(String error) {
+        try
+        {
+            String actualErrorMessage = errorMessage.getText();
+            return error.equalsIgnoreCase(actualErrorMessage);
+        } catch (Exception e) {
+            return false;
+        }
     }
     public boolean isContinueButtonVisible()
     {
