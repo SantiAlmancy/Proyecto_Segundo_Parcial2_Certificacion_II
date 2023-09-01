@@ -17,5 +17,15 @@ public class LoginTests extends BaseTest {
         Assertions.assertTrue(homePage.pageTitleIsDisplayed());
     }
 
+    @Test
+    public void loginFailed(){
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("wrong_user");
+        loginPage.setPasswordTextBox("wrong_password");
+        loginPage.clickOnLoginButton();
 
+        Assertions.assertTrue(loginPage.isErrorTextDisplayed("Epic sadface: Username and password do not match any user in this service"));
+    }
+
+    
 }
