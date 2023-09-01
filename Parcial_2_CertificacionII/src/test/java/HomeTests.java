@@ -32,5 +32,29 @@ public class HomeTests extends BaseTest
         homePage.selectSortComboBox("Name (A to Z)");
         Assertions.assertTrue(homePage.areProductsInAscendantOrderByName());
     }
+    @Test
+    public void orderingFromLowerToHigherPrice()
+    {
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.selectSortComboBox("Price (low to high)");
+        Assertions.assertTrue((homePage.areProductsInAscendantOrderByPrice()));
+    }
+    @Test
+    public void orderingFromHigherToLowerPrice()
+    {
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver().driver);
+        loginPage.setUserNameTextBox("standard_user");
+        loginPage.setPasswordTextBox("secret_sauce");
+        loginPage.clickOnLoginButton();
+
+        HomePage homePage = new HomePage(DriverManager.getDriver().driver);
+        homePage.selectSortComboBox("Price (high to low)");
+        Assertions.assertTrue((homePage.areProductsInDescendantOrderByPrice()));
+    }
     
 }
